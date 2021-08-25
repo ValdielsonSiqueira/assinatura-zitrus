@@ -24,6 +24,7 @@
 		height: 100vh;
 		color: #221b37;
 		gap: 12px;
+		font-family: "Sora", Sans-serif;
 	}
 	label {
 		color: #9999b0;
@@ -55,7 +56,7 @@
 		color: #4fc06f;
     border-radius: 20px;
 		border: none;
-    padding: 10px;
+    padding: 15px;
 		border: 1px solid #4fc06f;
 		cursor: pointer;
 		transition: background 0.2s;
@@ -67,7 +68,7 @@
 	}
 
 	.box-left {
-		padding: 50px;
+		padding: 150px;
 		display: flex;
 		flex-direction: column;
 		gap: 100px;
@@ -79,7 +80,7 @@
 		box-shadow: 1px 1px 1px 2px #4fc06f;
     margin: 0px 16px 0px 16px;
 		border-radius: 20px;
-    padding: 40px 0px 55px 35px;
+    padding: 40px 40px 55px 35px;
 	}
 
 	.tooltip {
@@ -124,15 +125,16 @@
 <head>
 <body>
 <div style="background-color: #f75a38;" class="box-left">
-		<img src="./assets/zitrus-logo.svg"  width="180" height="90"/>
+		<img src="https://zitrus.com.br/wp-content/uploads/2021/08/ass-20210816-marca.svg"  width="180" height="90"/>
 		<h1 style="font-size: 61px; line-height: 72px; font-family:'Sora', Sans-serif";>
 			<span style="color: #fff;">Juntos</span><br/>
-			podemos ir mais longe.
+			podemos ir<br/>
+		  mais longe.
 		</h1>
 </div>	
 <div>
 	<div style="display: flex; margin-top: 30px; 	padding: 50px;">
-		<div class="card-form" style="width: 450px; height: 420px;">
+		<div class="card-form" style="width: 450px; height: 450px;">
 			<div style="padding-bottom: 10px;">
 				<label for="nome">Nome</label><br/>
 				<input style="width: 350px;" id="nome" type="text" placeholder="Ciclano da Silva" oninput="onInputNome()" />
@@ -145,8 +147,8 @@
 				<label for="celular">Celular/Whats ou Telefone</label><br />
 				<input style="width: 350px;" id="celular" type="text" placeholder="+55 47 999999999" oninput="onInputCelular()" />
 			</div>
-			<div style="padding-top: 30px; display: flex;">
-				<div class="tooltip" style="margin-right: 16px;">
+			<div style="padding-top: 30px; display: flex; align-items: center; justify-content: center;">
+				<div class="tooltip" style="margin-right: 10px;">
 					<button id="generateSignatureHTMLButton" type="button" click="generateSignature" onmouseout="outGenerateSignature()">
 						<span class="tooltiptext" id="myTooltip">Clique para gerar o HTML</span>
 						Gerar assinatura HTML
@@ -167,7 +169,7 @@
 				<tbody>
 					<tr>
 						<td style="width: 220px; padding-right: 15px; text-align: center;">
-							<img src="./assets/zitrus-logo.svg"  width="180" height="90"/>
+							<img src="https://zitrus.com.br/wp-content/uploads/2021/08/ass-20210816-marca.svg"  width="180" height="90"/>
 						</td>
 						<td style=" padding-right: 25px; vertical-align: middle;" valign="middle">
 							<table cellpadding="0" cellspacing="0" style="width: 100%; min-width: 300px;">
@@ -209,7 +211,7 @@
 															<a href="https://www.instagram.com/zitrushealthtech/" target="_blank"
 																style="font-size:11px; color:#444;text-decoration: none;">
 																<img width="16" height="17"
-																	src="/assets/instagram.svg"
+																	src="https://zitrus.com.br/wp-content/uploads/2021/08/ass-20210816-instagram.svg"
 																	style="float: left; border:none;" border="0" align="left">
 															</a>
 														</td>
@@ -217,8 +219,8 @@
 															style="text-align: center; vertical-align: bottom; min-width: 14px; width: 14px;">
 															<a href="http://pt-br.facebook.com/zitrushealthtech/" target="_blank"
 																style="font-size:11px; color:#444; text-decoration: none;">
-																<img width="13" height="13"
-																	src="/assets/facebook.svg"
+																<img width="9" height="13"
+																	src="https://zitrus.com.br/wp-content/uploads/2021/08/ass-20210816-facebook.svg"
 																	style="float: left; border:none;" border="0" align="left">
 															</a>
 														</td>
@@ -227,8 +229,8 @@
 															<a href="http://br.linkedin.com/company/zitrushealthtech"
 																target="_blank"
 																style="font-size:11px; color:#444; text-decoration: none;">
-																<img width="14" height="15"
-																	src="/assets/linkdin.svg"
+																<img width="14" height="14"
+																	src="https://zitrus.com.br/wp-content/uploads/2021/08/ass-20210816-linkedin.svg"
 																	style="float: left; border:none; background-size: 12px 12px;"
 																	border="0" align="left">
 															</a>
