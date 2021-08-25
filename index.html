@@ -1,10 +1,9 @@
 <html>
 <head>
-	<script src="./html2canvas.min.js" type="text/javascript"></script>
 	<title>Assinatura de email</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 	*{
     margin: 0;
@@ -125,7 +124,7 @@
 <head>
 <body>
 <div style="background-color: #f75a38;" class="box-left">
-		<img src="https://zitrus.com.br/wp-content/uploads/2021/08/ass-20210816-marca.svg"  width="180" height="90"/>
+		<img src="/assets/zitrus_logo.png"  width="180" height="90"/>
 		<h1 style="font-size: 61px; line-height: 72px; font-family:'Sora', Sans-serif";>
 			<span style="color: #fff;">Juntos</span><br/>
 			podemos ir<br/>
@@ -150,13 +149,13 @@
 			<div style="padding-top: 30px; display: flex; align-items: center; justify-content: center;">
 				<div class="tooltip" style="margin-right: 10px;">
 					<button id="generateSignatureHTMLButton" type="button" click="generateSignature" onmouseout="outGenerateSignature()">
-						<span class="tooltiptext" id="myTooltip">Clique para gerar o HTML</span>
+						<!-- <span class="tooltiptext" id="myTooltip">Clique para gerar o HTML</span> -->
 						Gerar assinatura HTML
 					</button>
 				</div>
 				<div class="tooltip">
 					<button id="copySignatureButton" type="button" click="copySignature" onmouseout="outCopySignature()">
-						<span class="tooltiptext" id="myTooltipCopy">Clique para copiar</span>
+						<!-- <span class="tooltiptext" id="myTooltipCopy">Clique para copiar</span> -->
 						Copiar assinatura
 					</button>
 				</div>
@@ -165,11 +164,11 @@
 	</div>
 	<div id="signature">
 		<div>
-			<table id="html-content-holder" cellpadding="0" cellspacing="0" width="600" height="185" style="font-family: Tahoma, sans-serif; line-height: 1.15; width: 600px; direction: ltr; background-color: #ffffff;">
+			<table id="html-content-holder" cellpadding="0" cellspacing="0" width="600" height="185" style="font-family: Sora, sans-serif; line-height: 1.15; width: 600px; direction: ltr; background-color: #ffffff;">
 				<tbody>
 					<tr>
 						<td style="width: 220px; padding-right: 15px; text-align: center;">
-							<img src="https://zitrus.com.br/wp-content/uploads/2021/08/ass-20210816-marca.svg"  width="180" height="90"/>
+							<img src="/assets/logo-e-grafimos.svg"  width="220" height="185"/>
 						</td>
 						<td style=" padding-right: 25px; vertical-align: middle;" valign="middle">
 							<table cellpadding="0" cellspacing="0" style="width: 100%; min-width: 300px;">
@@ -177,12 +176,11 @@
 									<tr>
 										<td style="padding-bottom: 25px;">
 											<span id="signature-nome"
-												style="color: #97D700; font-size: 32px; font-weight: bold; white-space: nowrap; letter-spacing: 0.5px; font-family: 'Rockwell
-												', sans-serif; text-transform: initial;"
+												style="color: #97D700; font-size: 35px; font-weight: bold; white-space: nowrap; letter-spacing: 0.5px; font-family: 'Sora', sans-serif; text-transform: initial;"
 												data-acs="name">Jhonatan S Nunes</span>
 											<br>
 											<span id="signature-cargo"
-												style="font-size: 12px; letter-spacing: 0.5px; font-family: Tahoma, sans-serif; text-transform: initial; color: #221C35; white-space: nowrap;"
+												style="font-size: 17px; letter-spacing: 0.5px; font-weight: lighter; font-family: Sora, sans-serif; text-transform: initial; color: #221C35; white-space: nowrap;"
 												data-acs="title">Agile Master</span>
 										</td>
 									</tr>
@@ -192,16 +190,16 @@
 												<tbody>
 													<tr style="display: block; width: 155px; min-width: 155px;">
 														<td style="vertical-align: bottom; display: block; width: 155px; min-width: 155px">
-															<a id="signature-celular" href="tel:+55 47 996978005" target="_blank" style="line-height: 25px; color-scheme: light only; font-weight: bold; color:#221C35; font-family: Tahoma, sans-serif; font-size: 14px; text-decoration: none; white-space: nowrap;" data-acs="phone">
-																<span style="text-decoration: none; width: 155px; min-width: 155px">
+															<a id="signature-celular" href="tel:+55 47 996978005" target="_blank" style="line-height: 25px; color-scheme: light only; font-weight: regular; color:#221C35; font-family: Sora, sans-serif; font-size: 14px; text-decoration: none; white-space: nowrap;" data-acs="phone">
+																<span style="text-decoration: none; width: 155px; min-width: 155px;font-size: 18px;">
 																	+55 47 996978005
 																</span>
 															</a>
 														</td>
 													</tr>
-													<tr style="display: flex; align-items: center;">
+													<tr style="display: flex; align-items: center; gap: 8px;">
 														<td style="vertical-align: bottom; padding-right: 10px;">
-															<a href="https://www.zitrus.com.br" target="_blank" style="line-height: 12px; color-scheme: light only; font-weight: bold; color:#221C35; font-family: Tahoma, sans-serif; font-size: 14px; text-decoration: none; white-space: nowrap;">
+															<a href="https://www.zitrus.com.br" target="_blank" style="line-height: 12px; color-scheme: light only; font-weight: bold; color:#221C35; font-family: Sora, sans-serif; font-size: 14px; text-decoration: none; white-space: nowrap; font-size: 17px; font-weight: 400;">
 																<span style="text-decoration: none;">
 																	zitrus.com.br
 																</span>
@@ -246,6 +244,11 @@
 					</tr>
 				</tbody>
 			</table>
+			<p style="font-size: 12px; margin-top: 12px; color: #808080; font-weight: 200; text-align: justify; padding: 0 20px; font-family: Sora, sans-serif;">
+				“Aviso Legal: Esta mensagem pode conter informações confidenciais. Se você não for o destinatário ou a pessoa autorizada a recebê-la,<br/> não
+				deve usar, copiar ou divulgar as informações nela contida ou tomar qualquer ação baseada no conteúdo recebido, além de excluí-la<br/>
+				imediatamente. Este ambiente é monitorado.”
+			</p>
 		</div>
 </div>	
 </div>
