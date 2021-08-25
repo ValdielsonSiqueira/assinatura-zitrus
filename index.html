@@ -1,0 +1,358 @@
+<html>
+<head>
+	<script src="./html2canvas.min.js" type="text/javascript"></script>
+	<title>Assinatura de email</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+	*{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+  }
+
+	h1, h2, h3, h4, h5, h6, strong {
+    font-weight: 500;
+  }
+	
+	body {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		width: 100%;
+		height: 100vh;
+		color: #221b37;
+		gap: 12px;
+	}
+	label {
+		color: #9999b0;
+	}
+
+	input {
+		all: unset;
+	}
+
+	input {
+    border: 1px solid #97D700;
+		padding: 15px 15px;
+		border-radius: 5px;
+    color: #221b37;
+		margin-top: 8px;
+		transition: 0.2s border;
+
+  }
+
+	input:focus {
+    border: 1px solid #4fc06f
+	}
+
+	button {
+		font-family: "Sora", Sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    background-color: white;
+		color: #4fc06f;
+    border-radius: 20px;
+		border: none;
+    padding: 10px;
+		border: 1px solid #4fc06f;
+		cursor: pointer;
+		transition: background 0.2s;
+	}
+
+	button:hover {
+		background-color: #4fc06f;
+		color: white;
+	}
+
+	.box-left {
+		padding: 50px;
+		display: flex;
+		flex-direction: column;
+		gap: 100px;
+	}
+
+	.card-form {
+    border-width: 1px 1px 1px 1px;
+    border-color: #E8F0EE;
+		box-shadow: 1px 1px 1px 2px #4fc06f;
+    margin: 0px 16px 0px 16px;
+		border-radius: 20px;
+    padding: 40px 0px 55px 35px;
+	}
+
+	.tooltip {
+		position: relative;
+		display: inline-block;
+	}
+
+	.tooltip .tooltiptext {
+		visibility: hidden;
+		width: 140px;
+		background-color: #555;
+		color: #fff;
+		text-align: center;
+		border-radius: 6px;
+		padding: 5px;
+		position: absolute;
+		z-index: 1;
+		top: 150%;
+		left: 50%;
+		margin-left: -75px;
+		opacity: 0;
+		transition: opacity 0.3s;
+	}
+
+	.tooltip .tooltiptext::after {
+		content: "";
+		position: absolute;
+		bottom: 99%;
+		left: 50%;
+		transform: rotate(180deg);
+		margin-left: -5px;
+		border-width: 5px;
+		border-style: solid;
+		border-color: #555 transparent transparent transparent;
+	}
+
+	.tooltip:hover .tooltiptext {
+		visibility: visible;
+		opacity: 1;
+	}
+</style>
+<head>
+<body>
+<div style="background-color: #f75a38;" class="box-left">
+		<img src="./assets/zitrus-logo.svg"  width="180" height="90"/>
+		<h1 style="font-size: 61px; line-height: 72px; font-family:'Sora', Sans-serif";>
+			<span style="color: #fff;">Juntos</span><br/>
+			podemos ir mais longe.
+		</h1>
+</div>	
+<div>
+	<div style="display: flex; margin-top: 30px; 	padding: 50px;">
+		<div class="card-form" style="width: 450px; height: 420px;">
+			<div style="padding-bottom: 10px;">
+				<label for="nome">Nome</label><br/>
+				<input style="width: 350px;" id="nome" type="text" placeholder="Ciclano da Silva" oninput="onInputNome()" />
+			</div>
+			<div style="padding-bottom: 10px;">
+				<label for="cargo">Cargo ou Departamento</label><br />
+				<input style="width: 350px;" id="cargo" type="text" placeholder="Meu cargo ou departamento" oninput="onInputCargo()" />
+			</div>
+			<div style="padding-bottom: 10px;">
+				<label for="celular">Celular/Whats ou Telefone</label><br />
+				<input style="width: 350px;" id="celular" type="text" placeholder="+55 47 999999999" oninput="onInputCelular()" />
+			</div>
+			<div style="padding-top: 30px; display: flex;">
+				<div class="tooltip" style="margin-right: 16px;">
+					<button id="generateSignatureHTMLButton" type="button" click="generateSignature" onmouseout="outGenerateSignature()">
+						<span class="tooltiptext" id="myTooltip">Clique para gerar o HTML</span>
+						Gerar assinatura HTML
+					</button>
+				</div>
+				<div class="tooltip">
+					<button id="copySignatureButton" type="button" click="copySignature" onmouseout="outCopySignature()">
+						<span class="tooltiptext" id="myTooltipCopy">Clique para copiar</span>
+						Copiar assinatura
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="signature">
+		<div>
+			<table id="html-content-holder" cellpadding="0" cellspacing="0" width="600" height="185" style="font-family: Tahoma, sans-serif; line-height: 1.15; width: 600px; direction: ltr; background-color: #ffffff;">
+				<tbody>
+					<tr>
+						<td style="width: 220px; padding-right: 15px; text-align: center;">
+							<img src="./assets/zitrus-logo.svg"  width="180" height="90"/>
+						</td>
+						<td style=" padding-right: 25px; vertical-align: middle;" valign="middle">
+							<table cellpadding="0" cellspacing="0" style="width: 100%; min-width: 300px;">
+								<tbody>
+									<tr>
+										<td style="padding-bottom: 25px;">
+											<span id="signature-nome"
+												style="color: #97D700; font-size: 32px; font-weight: bold; white-space: nowrap; letter-spacing: 0.5px; font-family: 'Rockwell
+												', sans-serif; text-transform: initial;"
+												data-acs="name">Jhonatan S Nunes</span>
+											<br>
+											<span id="signature-cargo"
+												style="font-size: 12px; letter-spacing: 0.5px; font-family: Tahoma, sans-serif; text-transform: initial; color: #221C35; white-space: nowrap;"
+												data-acs="title">Agile Master</span>
+										</td>
+									</tr>
+									<tr style="display: block;">
+										<td style="vertical-align: bottom;">
+											<table cellpadding="0" cellspacing="0">
+												<tbody>
+													<tr style="display: block; width: 155px; min-width: 155px;">
+														<td style="vertical-align: bottom; display: block; width: 155px; min-width: 155px">
+															<a id="signature-celular" href="tel:+55 47 996978005" target="_blank" style="line-height: 25px; color-scheme: light only; font-weight: bold; color:#221C35; font-family: Tahoma, sans-serif; font-size: 14px; text-decoration: none; white-space: nowrap;" data-acs="phone">
+																<span style="text-decoration: none; width: 155px; min-width: 155px">
+																	+55 47 996978005
+																</span>
+															</a>
+														</td>
+													</tr>
+													<tr style="display: flex; align-items: center;">
+														<td style="vertical-align: bottom; padding-right: 10px;">
+															<a href="https://www.zitrus.com.br" target="_blank" style="line-height: 12px; color-scheme: light only; font-weight: bold; color:#221C35; font-family: Tahoma, sans-serif; font-size: 14px; text-decoration: none; white-space: nowrap;">
+																<span style="text-decoration: none;">
+																	zitrus.com.br
+																</span>
+															</a>
+														</td>
+														<td align="left" style="text-align: center; vertical-align: bottom; min-width: 18px; width: 18px;">
+															<a href="https://www.instagram.com/zitrushealthtech/" target="_blank"
+																style="font-size:11px; color:#444;text-decoration: none;">
+																<img width="16" height="17"
+																	src="/assets/instagram.svg"
+																	style="float: left; border:none;" border="0" align="left">
+															</a>
+														</td>
+														<td align="left"
+															style="text-align: center; vertical-align: bottom; min-width: 14px; width: 14px;">
+															<a href="http://pt-br.facebook.com/zitrushealthtech/" target="_blank"
+																style="font-size:11px; color:#444; text-decoration: none;">
+																<img width="13" height="13"
+																	src="/assets/facebook.svg"
+																	style="float: left; border:none;" border="0" align="left">
+															</a>
+														</td>
+														<td align="left"
+															style="text-align: center; vertical-align: bottom; min-width: 14px; width: 14px;">
+															<a href="http://br.linkedin.com/company/zitrushealthtech"
+																target="_blank"
+																style="font-size:11px; color:#444; text-decoration: none;">
+																<img width="14" height="15"
+																	src="/assets/linkdin.svg"
+																	style="float: left; border:none; background-size: 12px 12px;"
+																	border="0" align="left">
+															</a>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+</div>	
+</div>
+<script>
+	
+	const buttonHTML = document.getElementById('generateSignatureHTMLButton');
+	const buttonCopy = document.getElementById('copySignatureButton');
+
+	buttonHTML.addEventListener('click', generateSignature);
+	buttonCopy.addEventListener('click', copySignature);
+
+	function outGenerateSignature() {
+		var tooltip = document.getElementById("myTooltip");
+
+		tooltip.innerHTML = "Clique para copiar o HTML";
+	}
+
+	function outCopySignature() {
+		var tooltip = document.getElementById("myTooltipCopy");
+
+		tooltip.innerHTML = "Clique para copiar";
+	}
+
+	function generateSignature() {
+		var signatureHtml = document.getElementById("signature").innerHTML;
+		var tempElement = document.createElement('textarea');
+		tempElement.value = signatureHtml;
+
+		document.body.appendChild(tempElement);
+
+		tempElement.select();
+		document.execCommand('copy');
+
+		document.body.removeChild(tempElement);
+
+		var tooltip = document.getElementById("myTooltip");
+		
+		// createImagemSignature();
+
+		tooltip.innerHTML = "HTML e imagem da assinatura de email copiada no CTRL + C | CTRL + V";
+	}
+
+	function createImagemSignature() {
+		html2canvas(document.getElementById("html-content-holder")).then(function (canvas) {		
+			var anchorTag = document.createElement("a");
+				document.body.appendChild(anchorTag);
+				anchorTag.download = "assinatura.png";
+				anchorTag.href = canvas.toDataURL();
+				anchorTag.target = '_blank';
+				anchorTag.click();
+			});
+	}
+
+	function copySignature() {
+		var signature = document.getElementById("signature");
+		var selection = window.getSelection();
+		var range = document.createRange();
+		range.selectNodeContents(signature);
+		selection.removeAllRanges();
+		selection.addRange(range);
+		document.execCommand('copy');
+
+		var tooltip = document.getElementById("myTooltipCopy");
+		tooltip.innerHTML = "Assinatura de email copiada no CTRL + C | CTRL + V";
+	}
+
+	function onInputNome() {
+		var nome = document.getElementById("nome").value
+
+		if (!nome) {
+			nome = "MEU NOME VAI AQUI";
+		}
+
+		document.getElementById("signature-nome").innerHTML = nome[0].toUpperCase() + nome.substring(1);
+	}
+
+	function onInputCargo() {
+		var cargo = document.getElementById("cargo").value;
+
+		if (!cargo) {
+			cargo = "MEU CARGO";
+		}
+
+		document.getElementById("signature-cargo").innerHTML = cargo[0].toUpperCase() + cargo.substring(1);
+	}
+
+	function onInputEmail() {
+		var email = document.getElementById("email").value;
+
+		if (!email) {
+			email = "email@fesctecnologia.com.br";
+		}
+
+		email = email.toLowerCase();
+
+		document.getElementById("signature-email").innerHTML = email;
+		document.getElementById("signature-email").href = "mailto:" + email;
+	}
+
+	function onInputCelular() {
+		var celular = document.getElementById("celular").value;
+
+		if (!celular) {
+			celular = "+55 47 999999999";
+		}
+
+		document.getElementById("signature-celular").innerHTML = celular;
+		document.getElementById("signature-celular").href = 'tel:' + celular;
+	}
+</script>
+<body>
+</html>
