@@ -157,7 +157,7 @@ input {
 			</div>
 			<div style="padding-bottom: 10px;">
 				<label for="celular">Celular/Whats ou Telefone (<label style="color: #f75a38;">opcional</label>)</label><br />
-				<input style="width: 350px;" id="celular" type="number" placeholder="+55 47 999999999" oninput="onInputCelular()" />
+				<input onkeypress="return isNumeric(event)" style="width: 350px;" id="celular" type="number" placeholder="+55 47 999999999" oninput="onInputCelular()" />
 			</div>
 			<div style="padding-top: 30px; display: flex; align-items: center; justify-content: center;">
 				<div class="tooltip" style="margin-right: 10px;">
@@ -328,6 +328,17 @@ input {
 		var tooltip = document.getElementById("myTooltipCopy");
 		tooltip.innerHTML = "Assinatura de email copiada no CTRL + C | CTRL + V";
 	}
+
+	function isNumeric (evt) {
+    var theEvent = evt || window.event;
+    var key = theEvent.keyCode || theEvent.which;
+    key = String.fromCharCode (key);
+    var regex = /[0-9]|\./;
+    if ( !regex.test(key) ) {
+      theEvent.returnValue = false;
+      if(theEvent.preventDefault) theEvent.preventDefault();
+    }
+  }
 
 	function onInputNome() {
 		var nome = document.getElementById("nome").value
