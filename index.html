@@ -176,7 +176,7 @@ input {
 		</div>
 	</div>
 	<div id="signature">
-		<div>
+		<div id="html-content">
 			<table id="html-content-holder" cellpadding="0" cellspacing="0" width="600" height="185" style="font-family: Sora, sans-serif; line-height: 1.15; width: 600px; direction: ltr; background-color: #ffffff;">
 				<tbody>
 					<tr>
@@ -254,7 +254,7 @@ input {
 					</tr>
 				</tbody>
 			</table>
-			<p style="font-size: 12px; margin-top: 12px; color: #808080; font-weight: 200; text-align: justify; padding: 0 20px; font-family: Sora, sans-serif;">
+			<p style="font-size: 12px; margin-top: 12px; color: #808080; font-weight: 200; padding: 0 20px; font-family: Sora, sans-serif;">
 				“Aviso Legal: Esta mensagem pode conter informações confidenciais. Se você não for o destinatário ou a pessoa autorizada a recebê-la,<br/> não
 				deve usar, copiar ou divulgar as informações nela contida ou tomar qualquer ação baseada no conteúdo recebido, além de excluí-la<br/>
 				imediatamente. Este ambiente é monitorado.”
@@ -303,7 +303,7 @@ input {
 	}
 
 	function createImagemSignature() {
-		html2canvas(document.getElementById("html-content-holder")).then(function (canvas) {		
+		html2canvas(document.getElementById("html-content")).then(function (canvas) {		
 			var anchorTag = document.createElement("a");
 				document.body.appendChild(anchorTag);
 				anchorTag.download = "assinatura.png";
